@@ -74,7 +74,7 @@ jobs:
                 aws-region: AWS_REGION
             - run:
                 name: "Create EKS cluster"
-                command: bash scripts/create_cluster.sh
+                command: bash script/create_cluster.sh
             - run:
                 name: Update kubectl config 
                 command: |
@@ -102,12 +102,12 @@ jobs:
                     kubectl apply -f config/deploy_service.yml
             - kubernetes/create-or-update-resource:
                 get-rollout-status: true
-                resource-file-path: config/deploy_service.yml
+                resource-file-path: deploy_service.yml
                 resource-name: deployment/server
                 show-kubectl-command: true
-            - run:
-                name: Get details
-                command: bash scripts/cluster_details.sh
+            # - run:
+            #     name: Get details
+            #     command: bash script/cluster_details.sh
 
 workflows:
     default:
@@ -118,7 +118,7 @@ workflows:
                 # filters:
                 #     branches:
                 #         only: [main]
-            # - create_cluster:
-            #     requires: [build_publish_dockerimage]
-            # - update_cluster:
-            #     requires: [create_cluster] 
+            - create_cluster:
+                requires: [build_publish_dockerimage]
+            - update_cluster:
+                requires: [create_cluster] 
