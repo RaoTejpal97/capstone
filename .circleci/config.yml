@@ -99,7 +99,7 @@ jobs:
             - run:
                 name: Apply Deployment
                 command: |
-                    kubectl apply -f config/deploy_service.yml
+                    kubectl apply -f deploy_service.yml
             - kubernetes/create-or-update-resource:
                 get-rollout-status: true
                 resource-file-path: deploy_service.yml
