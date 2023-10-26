@@ -78,7 +78,7 @@ jobs:
             - run:
                 name: Update kubectl config 
                 command: |
-                    aws eks update-kubeconfig --region us-east-1 --name capstone
+                    aws eks update-kubeconfig --region us-east-1 --name capstone1
 
     update_cluster:
         docker:
@@ -95,7 +95,7 @@ jobs:
             - run:
                 name: Update Kube config
                 command: |
-                    aws eks update-kubeconfig --region us-east-1 --name capstone
+                    aws eks update-kubeconfig --region us-east-1 --name capstone1
             - run:
                 name: Apply Deployment
                 command: |
