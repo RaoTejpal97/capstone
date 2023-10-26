@@ -4,6 +4,7 @@ cluster_name=capstone
 aws_region=us-east-1
 
 if /.eksctl utils describe-stacks --region=${aws_region} --cluster=${cluster_name} | grep -q ${cluster_name}; then
+    /.eksctl delete cluster --region=${aws_region} --name=${cluster_name}
     echo "Cluster already exists"
 else
     echo "Creating new cluster..."
