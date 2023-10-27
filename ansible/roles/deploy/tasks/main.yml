@@ -1,8 +1,9 @@
 ---
-- name: Apply LoadBalancer Service
+- name: "Configure the EKS cluster with kubectl"
   hosts: localhost
-  tasks:
-    - name: Apply Kubernetes LoadBalancer Service
-      command: kubectl apply -f path/to/your/service.yaml
-      environment:
-        KUBECONFIG: ~/project/deploy_service.yml
+  user: ubuntu
+  gather_facts: false
+  become: yes
+  
+  roles:
+    - deploy
