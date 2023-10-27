@@ -1,2 +1,8 @@
-- name: Apply deployment configuration
-  shell: "./bin/kubectl apply -f deploy_service.yml"
+---
+- name: Apply LoadBalancer Service
+  hosts: localhost
+  tasks:
+    - name: Apply Kubernetes LoadBalancer Service
+      command: kubectl apply -f path/to/your/service.yaml
+      environment:
+        KUBECONFIG: ~/project/deploy_service.yml
