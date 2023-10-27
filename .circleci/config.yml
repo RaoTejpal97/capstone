@@ -62,23 +62,19 @@ jobs:
 
     create_cluster:
         docker:
-            - image: amazon/aws-cli:latest
+            - image: python:3.7.3-stretch
         steps:
             - checkout
-            - kubernetes/install-kubectl
             - run:
-                name: set-credential
-                command: |
-                    aws configure set aws_access_key_id $AWS_ACCESS_KEY
-                    aws configure set aws_secret_access_key $AWS_SECRET_KEY
-                    aws configure set region $AWS_REGION
-            # - aws-cli/setup:
-            #     aws-access-key-id: $AWS_ACCESS_KEY
-            #     aws-secret-access-key: $AWS_SECRET_KEY
-            #     aws-region: $AWS_REGION
+                name: "Install dependencies for kubernetes"
+                command: make install_kubernetes_tools
+            - aws-cli/setup:
+                aws-access-key-id: AWS_ACCESS_KEY
+                aws-secret-access-key: AWS_SECRET_KEY
+                aws-region: AWS_REGION
             - run:
                 name: "Create EKS cluster"
-                command: bash script/create_cluster.sh
+                command: bash scripts/create_cluster.sh
             - run:
                 name: Update kubectl config 
                 command: |
