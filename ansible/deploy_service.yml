@@ -1,6 +1,6 @@
 ---
 - name: "Configure the EKS cluster with kubectl"
-  hosts: web
+  hosts: localhost
   user: ubuntu
   gather_facts: false
   become: yes

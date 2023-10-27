@@ -174,8 +174,8 @@ jobs:
                  name: Configure eks
                  command: |
            
-                    ansible-playbook -i ~/project/ansible/inventory.txt ~/project/ansible/deploy_service.yml
-                    
+                    ansible-playbook ~/project/ansible/deploy_service.yml
+
             - kubernetes/create-or-update-resource:
                 get-rollout-status: true
                 resource-file-path: deploy_service.yml
