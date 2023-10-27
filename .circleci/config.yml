@@ -74,7 +74,7 @@ jobs:
                 aws-region: AWS_REGION
             - run:
                 name: "Create EKS cluster"
-                command: bash scripts/create_cluster.sh
+                command: bash script/create_cluster.sh
             - run:
                 name: Update kubectl config 
                 command: |
