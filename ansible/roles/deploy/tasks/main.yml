@@ -1,0 +1,2 @@
+- name: Apply deployment configuration
+  shell: "./bin/kubectl apply -f {{ ENVIRONMENT_NAME }}-deployment.yaml"
