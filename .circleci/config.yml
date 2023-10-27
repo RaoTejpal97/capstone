@@ -62,12 +62,13 @@ jobs:
 
     create_cluster:
         docker:
-            - image: python:3.7.3-stretch
+            - image: amazon/aws-cli:latest
         steps:
             - checkout
             - run:
                 name: "Install dependencies for kubernetes"
                 command: make install_kubernetes_tools
+            - kubernetes/install-kubectl
             - run:
                 name: set-credential
                 command: |
