@@ -105,9 +105,13 @@ jobs:
                 resource-file-path: deploy_service.yml
                 resource-name: deployment/server
                 show-kubectl-command: true
-            # - run:
-            #     name: Get details
-            #     command: bash script/cluster_details.sh
+            - run:
+                name: Get details
+                command: |
+                     echo "loadbalancer :"
+                     kubectl get service/loadbalancer-service
+                     echo "Deploy, RS, SVC, Pod details:"
+                     kubectl get deploy,rs,svc,pods
 
 workflows:
     default:
