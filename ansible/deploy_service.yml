@@ -1,10 +1,16 @@
 
-
 ---
+
+- name: Update kubeconfig and apply resource
+  hosts: localhost
+  tasks:
+    - name: Copy updated kubeconfig to local machine
+      command: aws eks update-kubeconfig --region us-east-1 --name capstone1
+      delegate_to: localhost
+
 - name: Apply LoadBalancer Service
   hosts: localhost
   tasks:
     - name: Apply Kubernetes LoadBalancer Service
       command: kubectl apply -f ~/project/deploy_service.yml
-      environment:
-        KUBECONFIG: ~/project/deploy_service.yml
+      
