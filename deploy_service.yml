@@ -7,11 +7,11 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: capstone
+      app: capstone1
   template:
     metadata:
       labels:
-        app: capstone
+        app: capstone1
     spec:
       containers:
         - name: web
@@ -28,8 +28,9 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: capstone
+    app: capstone1
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+
